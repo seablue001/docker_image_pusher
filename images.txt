@@ -1,3 +1,5 @@
 nginx:latest
 mysql:5.5.62
 redis:latest
+influxdb:latest
+grafana/grafana:latest
