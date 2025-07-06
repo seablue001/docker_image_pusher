@@ -1,6 +1,6 @@
 nginx:latest
 mysql:5.5.62
 redis:latest
-crpi-c5hudyl9ef5u6dg6.cn-hangzhou.personal.cr.aliyuncs.com/seablue/cadvisor
+registry.cn-hangzhou.aliyuncs.com/seablue/cadvisor:latest
 influxdb:latest
 grafana/grafana:latest
