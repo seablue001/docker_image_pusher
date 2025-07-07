@@ -1,6 +1,7 @@
 nginx:latest
 mysql:5.5.62
 redis:latest
+portainer/portainer-ce:2.20.3
 google/cadvisor
 influxdb:latest
 grafana/grafana:latest
