@@ -15,12 +15,12 @@ RUN apt-get update \
     && pecl install igbinary redis \
     && docker-php-ext-enable igbinary redis \
     # SQL Server 驱动及扩展（如需支持，建议基础镜像用 bullseye，否则注释以下内容）
-    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list \
-    && apt-get update \
-    && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
-    && pecl install pdo_sqlsrv sqlsrv \
-    && docker-php-ext-enable pdo_sqlsrv sqlsrv \
+    # && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    # && curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    # && apt-get update \
+    # && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
+    # && pecl install pdo_sqlsrv sqlsrv \
+    # && docker-php-ext-enable pdo_sqlsrv sqlsrv \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
