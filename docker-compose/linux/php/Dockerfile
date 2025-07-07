@@ -1,16 +1,17 @@
 FROM php:8.1-fpm
 
-# 使用阿里云 apt 源（如已在基础镜像中替换可省略）
-RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
-    && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
-    # 安装依赖和 PHP 扩展
-    && apt-get update \
+# 设置时区，保证日志和应用时间一致
+ENV TZ=Asia/Shanghai
+
+RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         libonig-dev \
         gcc g++ make autoconf libc-dev pkg-config libssl-dev \
         libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip \
         libcurl4-openssl-dev \
+    # 安装 PHP 常用扩展
     && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo \
+    # 安装 igbinary 和 redis 扩展（如需指定版本可写 pecl install redis-5.3.7）
     && pecl install igbinary redis \
     && docker-php-ext-enable igbinary redis \
     # SQL Server 驱动及扩展（如需支持，建议基础镜像用 bullseye，否则注释以下内容）
