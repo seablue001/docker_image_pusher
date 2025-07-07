@@ -1,5 +1,6 @@
 nginx:latest
 mysql:5.5.62
 redis:latest
+dockerproxy.com/google-containers/cadvisor:latest
 influxdb:latest
 grafana/grafana:latest
