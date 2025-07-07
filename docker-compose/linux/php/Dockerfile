@@ -10,7 +10,7 @@ RUN apt-get update \
         libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip \
         libcurl4-openssl-dev \
     # 安装 PHP 常用扩展
-    && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo \
+    && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip \
     # 安装 igbinary 和 redis 扩展（如需指定版本可写 pecl install redis-5.3.7）
     && pecl install igbinary redis \
     && docker-php-ext-enable igbinary redis \
