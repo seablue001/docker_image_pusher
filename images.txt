@@ -1,6 +1,6 @@
 nginx:latest
 mysql:5.5.62
-redis:latest
+redis:7.2.8
 portainer/portainer-ce:2.20.3
 google/cadvisor
 influxdb:latest
