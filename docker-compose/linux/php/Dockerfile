@@ -13,7 +13,7 @@ RUN apt-get update \
         gcc g++ make autoconf libc-dev pkg-config libssl-dev \
         libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip \
         libcurl4-openssl-dev \
-    && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip openssl
+    && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip
 
 RUN pecl install igbinary redis \
     && docker-php-ext-enable igbinary redis
