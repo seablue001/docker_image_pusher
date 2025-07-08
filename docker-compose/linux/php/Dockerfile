@@ -19,7 +19,7 @@ RUN pecl install igbinary redis \
 
 RUN mkdir -p /etc/apt/sources.list.d \
     && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    && curl https://packages.microsoft.com/config/debian/12/prod.list > /etc/apt/sources.list.d/mssql-release.list \
     && apt-get update \
     && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
     && pecl install pdo_sqlsrv sqlsrv \
