@@ -5,11 +5,13 @@ ENV TZ=Asia/Shanghai
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         gnupg \
+        unixodbc \
+        unixodbc-dev \
+        libodbc1 \
         libonig-dev \
         gcc g++ make autoconf libc-dev pkg-config libssl-dev \
         libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip \
         libcurl4-openssl-dev \
-        unixodbc-dev \
     && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip
 
 RUN pecl install igbinary redis \
