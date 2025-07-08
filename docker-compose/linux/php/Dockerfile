@@ -4,6 +4,7 @@ ENV TZ=Asia/Shanghai
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        gnupg \
         libonig-dev \
         gcc g++ make autoconf libc-dev pkg-config libssl-dev \
         libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip \
@@ -14,7 +15,8 @@ RUN apt-get update \
 RUN pecl install igbinary redis \
     && docker-php-ext-enable igbinary redis
 
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+RUN mkdir -p /etc/apt/sources.list.d \
+    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
     && curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list \
     && apt-get update \
     && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
