@@ -2,6 +2,8 @@ nginx:latest
 mysql:5.5.62
 redis:7.2.8
 portainer/portainer-ce:2.20.3
-google/cadvisor
-influxdb:latest
 grafana/grafana:latest
+quay.io/prometheus/node-exporter:latest
+prom/prometheus:latest
+prom/alertmanager:latest
+prom/blackbox-exporter:latest
