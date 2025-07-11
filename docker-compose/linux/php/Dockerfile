@@ -14,9 +14,12 @@ RUN apt-get update \
         libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip \
         libcurl4-openssl-dev \
         libicu-dev \
+        zlib1g-dev \
+        libxml2-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip \
-    && docker-php-ext-install bcmath exif intl pcntl simplexml xml xmlwriter xmlreader
+    && docker-php-ext-install \
+        pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip \
+        bcmath exif intl pcntl simplexml xml xmlwriter xmlreader
 
 RUN pecl install igbinary redis \
     && docker-php-ext-enable igbinary redis
