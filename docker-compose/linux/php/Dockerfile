@@ -1,17 +1,20 @@
-FROM php:8.2-fpm
+FROM php:8.1-fpm
 
 ENV TZ=Asia/Shanghai
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        gnupg dirmngr unixodbc unixodbc-dev libodbc1 libonig-dev \
+        gnupg \
+        dirmngr \
+        unixodbc \
+        unixodbc-dev \
+        libodbc1 \
+        libonig-dev \
         gcc g++ make autoconf libc-dev pkg-config libssl-dev \
         libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip \
-        libcurl4-openssl-dev libicu-dev zlib1g-dev libxml2-dev \
+        libcurl4-openssl-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install \
-        dom pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip \
-        bcmath exif intl simplexml xml xmlwriter xmlreader
+    && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip
 
 RUN pecl install igbinary redis \
     && docker-php-ext-enable igbinary redis
