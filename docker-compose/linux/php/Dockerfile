@@ -17,8 +17,6 @@ RUN apt-get update \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip bcmath
 
-RUN docker-php-ext-install openssl
-
 RUN pecl install igbinary redis \
     && docker-php-ext-enable igbinary redis
 
