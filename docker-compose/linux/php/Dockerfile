@@ -1,4 +1,5 @@
-FROM php:8.1-fpm
+# FROM php:8.1-fpm
+FROM php:8.1-fpm-bullseye
 
 # ENV TZ=Asia/Shanghai
 ENV TZ=UTC
