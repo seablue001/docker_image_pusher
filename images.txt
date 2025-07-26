@@ -7,3 +7,4 @@ quay.io/prometheus/node-exporter:latest
 prom/prometheus:latest
 prom/alertmanager:latest
 prom/blackbox-exporter:latest
+ollama/ollama:latest
