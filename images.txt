@@ -4,6 +4,7 @@ redis:7.2.8
 portainer/portainer-ce:2.20.3
 grafana/grafana:latest
 quay.io/prometheus/node-exporter:latest
+gcr.io/google-containers/cadvisor:latest
 prom/prometheus:latest
 prom/alertmanager:latest
 prom/blackbox-exporter:latest
