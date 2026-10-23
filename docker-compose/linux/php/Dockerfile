@@ -5,6 +5,7 @@ FROM php:8.3.36-fpm-bookworm
 
 # ENV TZ=Asia/Shanghai
 ENV TZ=UTC
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -17,11 +18,15 @@ RUN apt-get update \
         gcc g++ make autoconf libc-dev pkg-config libssl-dev \
         libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip \
         libcurl4-openssl-dev \
+        libpq-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip bcmath
+    && docker-php-ext-install -j$(nproc) pdo_mysql mysqli gd mbstring sockets curl opcache fileinfo zip bcmath pdo_pgsql pgsql
 
-RUN pecl install igbinary redis \
-    && docker-php-ext-enable igbinary redis
+RUN pecl config set mirror https://mirrors.aliyun.com/pecl/
+RUN pecl install igbinary \
+    && docker-php-ext-enable igbinary
+RUN pecl install redis \
+    && docker-php-ext-enable redis
 
 RUN mkdir -p /etc/apt/keyrings \
     && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/keyrings/microsoft.gpg \
